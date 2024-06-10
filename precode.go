@@ -137,7 +137,10 @@ func getTask(w http.ResponseWriter, req *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	w.Write(resp)
+	_, err = w.Write(resp)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func deleteTask(w http.ResponseWriter, req *http.Request) {
